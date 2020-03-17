@@ -10,9 +10,14 @@
 vagrant up
 ```
 
-Поднимется две машины:
+Пример однострочника:
 
-* `ansible` - с уже установленным пакетом `ansible` и ключом для доступа к хосту `web`
-* `web` - управляемый хост с которым будем экспериментировать
+```
+ansible -i inventories/staging/all.yml -m ping
+```
 
-Задание находится по ссылке: https://docs.google.com/document/d/1xaQZVyzw37kbZjk43sXo3xHV74ukGeQpFeyLwIwTNwQ/edit?usp=sharing
+Пример запуска playbook:
+
+```
+ansible-playbook -i inventories/staging/all.yml playbooks/vars.yml
+```
