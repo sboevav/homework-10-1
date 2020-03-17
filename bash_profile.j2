@@ -1,0 +1,31 @@
+# {{ ansible_managed }}
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+fi
+
+# User specific environment and startup programs
+
+PATH=$PATH:$HOME/.local/bin:$HOME/bin
+
+export PATH
+
+######
+
+export my_port={{ ansible_port }}
+
+
+{% if target_environment == 'staging' %}
+export env={{ target_environment }}
+{% for tru in pg_password %}
+export PGPASSWORD={{ tru }}
+{% endfor %}
+{% else %}
+export env='1234567'
+{% endif %}
+
+
+
+
